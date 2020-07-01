@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Hesap Makinesi
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Birinci Sayı</ion-label>
+        <ion-input placeholder="Sayı giriniz:" [(ngModel)]="number1"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">İkinci Sayı</ion-label>
+        <ion-input placeholder="Sayı giriniz:"[(ngModel)]="number2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Sonuç</ion-col>
+            <ion-col>{{result}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col><ion-button (click)="topla()" >
+              +
+            </ion-button></ion-col>
+            <ion-col><ion-button (click)="cikar()" >
+              -
+            </ion-button></ion-col>
+            <ion-col><ion-button (click)="carp()" >
+              X
+            </ion-button></ion-col>
+            <ion-col><ion-button (click)="bol()" >
+              /
+            </ion-button></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+    <ion-button routerLink="/counter" >
+      Geri Sayım
+    </ion-button>
+  </div>
+</ion-content>
