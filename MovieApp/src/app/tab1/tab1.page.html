@@ -1,22 +1,14 @@
-
-
 <ion-content [fullscreen]="true">
   <ion-content>
-    <ion-slides  [options]="slideOpts" pager="true">
-      <ion-slide *ngFor="let movie of moviesData; let i=index">
-     
-   
+    <ion-slides [options]="slideOpts" pager="true">
+      <ion-slide *ngFor="let movie of moviesData;">
         <ion-card>
-          <ion-img [src]=movie.poster_path></ion-img>
+          <ion-img [src]="movie.poster_path"></ion-img>
           <ion-card-header>
             <ion-card-subtitle>{{movie.title}}</ion-card-subtitle>
             <ion-card-title>{{movie.title}}</ion-card-title>
           </ion-card-header>
         </ion-card>
-        
-     
-      
-
       </ion-slide>
     </ion-slides>
   </ion-content>
