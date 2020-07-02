@@ -22,7 +22,7 @@
   </ion-row>
   <ion-slides [options]="slideOpts">
     <ion-slide *ngFor="let movie of moviesData;" >
-      <ion-card >
+      <ion-card (click)="openDetail(movie)">
         <ion-img [src]="movie.poster_path" class="cardimage" ></ion-img>
         <ion-card-header  >
           <ion-card-title>{{movie.title}}</ion-card-title>

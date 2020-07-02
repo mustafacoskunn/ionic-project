@@ -3,6 +3,7 @@ import { GenreServiceService } from "./../services/genre-service.service";
 import { RecentMoviesService } from "../services/recent-movies.service";
 import { from } from "rxjs";
 import { Component } from "@angular/core";
+import { NavigationExtras,Router } from '@angular/router';
 
 @Component({
   selector: "app-tab1",
@@ -18,10 +19,12 @@ export class Tab1Page {
     speed: 400, //animation hızı
     slidesPerView: 1.3, //item sayısı
   };
+ 
   constructor(
     public recentService: RecentMoviesService,
     public genreService: GenreServiceService,
-    public populerService: PopulerMoviesService
+    public populerService: PopulerMoviesService,
+    private router:Router,
   ) {
     this.moviesData = []; //constructor
     this.genresData = [];
@@ -88,4 +91,13 @@ export class Tab1Page {
       }
     });
   }
+  openDetail(movie:any){
+    let navigationExtras:NavigationExtras={
+      queryParams:{
+        movie:JSON.stringify(movie)
+      }
+    };
+    this.router.navigate(['detail-page'],navigationExtras)
+  }
+
 }
