@@ -8,6 +8,7 @@ export class Movie{ //apidaki modeller
     popularity:number;
     overview:string;
     genre_ids:Array<number>
+    genres:string
 }
 export class Results{
 

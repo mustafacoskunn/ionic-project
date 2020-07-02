@@ -8,7 +8,7 @@ import { throwError, Observable, from } from 'rxjs';
 })
 export class RecentMoviesService { //api servisi
 
-  base_path="https://api.themoviedb.org/3/movie/popular?api_key=b52051d5c5721e0718600f4c3ffd04e3"; //api servisi
+  base_path="https://api.themoviedb.org/3/movie/now_playing?api_key=b52051d5c5721e0718600f4c3ffd04e3&language=tr"; //api servisi
   constructor(private http:HttpClient) { }
 
   handleError(error:HttpErrorResponse){
