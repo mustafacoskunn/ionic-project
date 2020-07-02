@@ -1,0 +1,25 @@
+.movietitle{
+    position: absolute;
+    color: white;
+    margin-left: 10%;
+    margin-top: 25%;
+    font-weight: bold;
+    font-size: 20px;
+    width: auto;
+    z-index: 1;
+}
+
+.headerimage {
+    filter: blur(1px) brightness(0.8);
+    -webkit-filter:blur(1px) brightness(0.8);
+    -moz-filter:blur(1px) brightness(0.8);
+  
+ 
+}
+.content{
+    position: absolute;
+    top:200px;
+    width: 100%;
+    height: calc(100%-200px);
+}
+    
