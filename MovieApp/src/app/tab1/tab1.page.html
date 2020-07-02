@@ -1,16 +1,62 @@
 <ion-content [fullscreen]="true">
-  <ion-content>
-    <ion-slides [options]="slideOpts" >
-      <ion-slide *ngFor="let movie of moviesData;">
-        <ion-card>
-          <ion-img [src]="movie.poster_path" class="cardimage" ></ion-img>
-          <ion-card-header class="cardheader">
-            <ion-card-title class="cardtitle">{{movie.title}}</ion-card-title>
-            <ion-card-subtitle class="cardsubtitle">{{movie.genres}}</ion-card-subtitle>
-         
-          </ion-card-header>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
-  </ion-content>
+  <ion-row class="headerbosluk">
+    <ion-col size="2">
+      <ion-img
+        src="./../assets/icon/clapperboard.svg"
+        class="appicon"
+      ></ion-img>
+    </ion-col>
+    <ion-col class="title">Filmler</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item lines="none">
+        <ion-label>En Son Çıkan Filmler</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col
+      ><ion-item lines="none" class="all">
+        <ion-label>Hepsini Gör</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let movie of moviesData;" >
+      <ion-card >
+        <ion-img [src]="movie.poster_path" class="cardimage" ></ion-img>
+        <ion-card-header  >
+          <ion-card-title>{{movie.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{movie.genres}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <ion-row>
+    <ion-col>
+      <ion-item lines="none">
+        <ion-label>Popüler Filmler</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col
+      ><ion-item lines="none" class="all">
+        <ion-label>Hepsini Gör</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let movie of populerMoviesData;" >
+      <ion-card >
+        <ion-img [src]="movie.poster_path" class="cardimage" ></ion-img>
+        <ion-card-header  >
+          <ion-card-title>{{movie.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{movie.genres}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>
