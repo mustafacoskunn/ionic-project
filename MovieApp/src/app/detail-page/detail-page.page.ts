@@ -1,6 +1,6 @@
 import { Movie } from './../models/movie';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail-page',
@@ -9,19 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailPagePage implements OnInit {
 
-  public data:any;
+   data:any;
   genreArray:any;
-  constructor(private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params=>{ //burda abone olduk gelen routa params ile gelen cevapı tutuyoruz
+  constructor(private route: ActivatedRoute,private router: Router) {
+  
 
-       //
-      this.data=JSON.parse(params.movie) //jsonu parse ettik artık datayla işimiz
-      console.log(this.data)
-      this.genreArray=this.data.genres.split(",");
-      console.log(this.genreArray)
-     
-      
-    })
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.data = this.router.getCurrentNavigation().extras.state.movie;
+      }
+    });
   }
 
   ngOnInit() {

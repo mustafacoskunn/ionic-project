@@ -93,10 +93,12 @@ export class Tab1Page {
   }
   openDetail(movie:any){
     let navigationExtras:NavigationExtras={
-      queryParams:{
-        movie:JSON.stringify(movie)
+      state:{
+       movie:movie
       }
+      
     };
+    console.log(movie);
     this.router.navigate(['detail-page'],navigationExtras)
  
   }
