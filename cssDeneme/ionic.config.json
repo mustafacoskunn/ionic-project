@@ -1,0 +1,7 @@
+{
+  "name": "cssDeneme",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
