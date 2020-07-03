@@ -1,15 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Film Detayı</ion-title>
+
+
+  
+  <ion-toolbar >
     <ion-buttons slot="start">
-      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      <ion-back-button defaultHref="/tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Film Detayları</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onFavoriteClick()"><ion-icon name="heart" slot="icon-only"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
-  <ion-label class="movietitle">{{data.title}}</ion-label>
   <ion-img [src]="data.poster_path" class="headerimage"> </ion-img>
-  <div class="content"></div>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>Populerlik </ion-col>
+      <ion-col><ion-icon name="star"></ion-icon></ion-col>
+      <ion-col>Oylama Sayısı </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>{{data.popularity}} </ion-col>
+      <ion-col>{{data.vote_average}}/10</ion-col>
+      <ion-col>{{data.vote_count}} </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{data.title}}</ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let genre of genreArray">{{genre}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{data.overview}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-  

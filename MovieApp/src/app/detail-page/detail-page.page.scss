@@ -22,4 +22,30 @@
     width: 100%;
     height: calc(100%-200px);
 }
+
+.genres{
+    position: absolute;
+    z-index: 1;
+    width: calc(100%-20px);
+    height: 105px;
+}
+.genre{
+    float: left;
+    width: auto;
+    padding: 7px;
+    border: 2px solid white;
+    margin: 10px;
+    border-radius: 16px;
+    color: white;
+
+}
+ion-row {
+    text-align: center;
+    }
+ion-card-title{
+    text-align: center;
+}
+.rightHeader{
+    float: right;
+}
     

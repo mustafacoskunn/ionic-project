@@ -98,6 +98,7 @@ export class Tab1Page {
       }
     };
     this.router.navigate(['detail-page'],navigationExtras)
+ 
   }
 
 }
