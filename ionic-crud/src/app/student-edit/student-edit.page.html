@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>student-edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Name: <ion-text color="danger"></ion-text>
+    </ion-label>
+    <ion-input [(ngModel)]="data.name" type="text" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Age: <ion-text color="danger"></ion-text>
+    </ion-label>
+    <ion-input [(ngModel)]="data.age" type="text" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Adress: <ion-text color="danger"></ion-text>
+    </ion-label>
+    <ion-input [(ngModel)]="data.address" type="text" ></ion-input>
+  </ion-item>
+
+  <ion-button color="success" size="small" (click)="update()" class="ion-padding" >
+    <ion-icon name="checkmark-circle"></ion-icon>
+  </ion-button>
+  <ion-button color="danger" size="small" [routerLink]="[ '/student-list']" class="ion-padding" >
+    <ion-icon name="close-circle"></ion-icon>
+  </ion-button>
+  
+  
+</ion-content>
