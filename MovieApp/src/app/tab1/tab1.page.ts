@@ -43,7 +43,7 @@ export class Tab1Page {
       for (var i = 0; i < this.moviesData.length; i++) {
         //fotoğraflar path olarak verilmiş linke ekliyoruz
         this.moviesData[i].poster_path =
-          "http://image.tmdb.org/t/p/w300/" + this.moviesData[i].poster_path;
+          "http://image.tmdb.org/t/p/w500/" + this.moviesData[i].poster_path;
         var genres = "";
         for (var j = 0; j < this.moviesData[i].genre_ids.length; j++) {
           //anlamadım
