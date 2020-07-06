@@ -1,5 +1,5 @@
-import { Storage } from '@ionic/storage';
-import { ToastController } from "@ionic/angular";
+import { Storage } from "@ionic/storage";
+import { ToastController, NavController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Login } from "./../models/login";
 import { LoginServiceService } from "./../services/login-service.service";
@@ -12,49 +12,50 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LoginPage implements OnInit {
   user: any;
+  emptyInfo = "Mail veya Şifre Boş Bırakılamaz !";
+  errorInfo = "Mail veya Şifre Yanlış !";
   constructor(
     private loginService: LoginServiceService,
     private router: Router,
+    private nav: NavController,
     private toastController: ToastController,
-    private storage:Storage
-  ) {}
-
-  
+    private storage: Storage
+  ) { }
 
   ngOnInit() {
     this.user = new Login();
+
+    this.storage.get("account").then((val) => {
+    
+  
+    });
+  }
+  ionViewWillEnter() {
     this.storage.clear();
   }
-  async bospresentToast() {
+
+  async presentToast(message) {
     const toast = await this.toastController.create({
-      message: "Kullanıcı adı veya şifre boş bırakılamaz.",
-      duration: 2000,
-    });
-    toast.present();
-  }
-  async hatapresentToast() {
-    const toast = await this.toastController.create({
-      message: "Kullanıcı adı veya şifre hatalı.",
+      message: message,
       duration: 2000,
     });
     toast.present();
   }
 
-  userEkle() {
+  loginInfo() {
     if (!this.user.email || !this.user.password) {
-      this.bospresentToast();
+      this.presentToast(this.emptyInfo);
     } else {
       this.loginService.login(this.user).subscribe((response) => {
         if (response) {
           this.storage.clear();
-          this.user=response;
-   
-          this.storage.set('id', this.user.id);
-          this.storage.set('name',this.user.name);
-          console.log(this.user.name);
-          this.router.navigate(["student-list"]);
+          this.user = response;
+          this.storage.set('account', this.user);
+          //this.router.navigate(["student-list"]);
+
+           this.nav.navigateRoot(["student-list"]);
         } else {
-          this.hatapresentToast();
+          this.presentToast(this.errorInfo);
         }
       });
     }

@@ -1,22 +1,21 @@
-import { Login } from "./../models/login";
-import { throwError, Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpEvent,
   HttpHeaders,
 } from "@angular/common/http";
+import { throwError, Observable } from "rxjs";
+import { Login } from "../models/login";
 
 @Injectable({
   providedIn: "root",
 })
-export class LoginServiceService {
-  base_path = "http://127.0.0.1:8000/api/login/";
+export class RegisterService {
   constructor(private http: HttpClient) {}
+  base_path = "http://127.0.0.1:8000/api/register/";
   httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     }),
   };
   handleError(error: HttpErrorResponse) {
@@ -25,8 +24,7 @@ export class LoginServiceService {
     else console.error("Body Kodu:"); //
     return throwError("Hata!");
   }
-
-  login(user): Observable<Login> {
+  register(user): Observable<Login> {
     return this.http.post<Login>(this.base_path, user, this.httpOptions);
   }
 }

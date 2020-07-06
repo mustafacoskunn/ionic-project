@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { KayitOlPageRoutingModule } from './kayit-ol-routing.module';
+import { RegisterPageRoutingModule } from './register-routing.module';
 
-import { KayitOlPage } from './kayit-ol.page';
+import { RegisterPage } from './register.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    KayitOlPageRoutingModule
+    RegisterPageRoutingModule
   ],
-  declarations: [KayitOlPage]
+  declarations: [RegisterPage]
 })
-export class KayitOlPageModule {}
+export class RegisterPageModule {}

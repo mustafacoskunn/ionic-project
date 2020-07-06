@@ -29,9 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'kayit-ol',
-    loadChildren: () => import('./kayit-ol/kayit-ol.module').then( m => m.KayitOlPageModule)
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  
 ];
 
 @NgModule({

@@ -1,9 +1,11 @@
-import { ApiService } from "./../services/api.service";
+import { Login } from './../models/login';
+import { async } from '@angular/core/testing';
+import { ApiService } from "../services/student-crud.service";
 import { Component, OnInit } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
-import { MenuController, PopoverController } from "@ionic/angular";
-import { StudentListPopoverComponent } from '../student-list-popover/student-list-popover.component';
+import { MenuController, PopoverController, NavController } from "@ionic/angular";
+import { StudentListPopoverComponent } from "../student-list-popover/student-list-popover.component";
 
 @Component({
   selector: "app-student-list",
@@ -12,19 +14,22 @@ import { StudentListPopoverComponent } from '../student-list-popover/student-lis
 })
 export class StudentListPage {
   studentData: any;
-  name: any;
+  accountData: any;
   constructor(
-    public apiService: ApiService,
-    public router: Router,
+    private apiService: ApiService,
+    private router: Router,
     private storage: Storage,
     private menu: MenuController,
     private popoverController: PopoverController,
+    private nav: NavController,
   ) {
     this.studentData = [];
-    this.storage.get("name").then((val) => {
-      this.studentData.name = val;
-      this.name = val;
+    this.accountData=new Login();
+    this.storage.get("account").then((val) => {
+      this.accountData = val;
+      this.getAllStudents();
     });
+  
   }
 
   openCustom() {
@@ -34,65 +39,55 @@ export class StudentListPage {
   async popOver(item) {
     const popover = await this.popoverController.create({
       component: StudentListPopoverComponent,
-      cssClass: 'my-custom-class',
+      cssClass: "my-custom-class",
       translucent: true,
       componentProps: {
-        item: item
-      }
+        item: item,
+      },
     });
 
-    popover.onDidDismiss().then(result => {
- //popover dissmis olduğunda yeniden çaığır
+    popover.onDidDismiss().then((result) => {
+      //popover dissmis olduğunda yeniden çaığır
       this.getAllStudents();
-
     });
     return await popover.present();
   }
 
+  ngOnInit() {
+  
+  }
+  
 
+  ionViewWillEnter() {
+    this.getAllStudents();
+  }
 
-ngOnInit() { }
-
-
-ionViewWillEnter() {
-  this.getAllStudents();
-}
-
-async getAllStudents() {
-  await this.storage.get("id").then((val) => {
-    this.studentData.created_id = val;
-    if (!val) {
+    getAllStudents() {
+    if (!this.accountData) {
       this.router.navigate(["login"]);
     }
-  });
 
-  console.log(this.studentData.created_id);
-  this.apiService
-    .getList(this.studentData.created_id)
-    .subscribe((response) => {
+      this.apiService.getList(this.accountData.id).subscribe((response) => {
       this.studentData = response;
+     });
+  }
+
+  deleteData(id) {
+    this.apiService.deleteItem(id).subscribe((response) => {
+      this.getAllStudents();
     });
-}
+  }
+  studentEdit(item) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        data: item,
+      },
+    };
 
-deleteData(id) {
-  this.studentData.id = id;
-  console.log(this.studentData.id);
-  this.apiService.deleteItem(this.studentData.id).subscribe((response) => {
-    console.log(response);
-    this.getAllStudents();
-  });
-}
-studentEdit(item) {
-  let navigationExtras: NavigationExtras = {
-    state: {
-      data: item,
-    },
-  };
-
-  this.router.navigate(["student-edit"], navigationExtras);
-}
-cikisYap() {
-  this.storage.clear();
-  this.router.navigate(["login"]);
-}
+    this.router.navigate(["student-edit"], navigationExtras);
+  }
+  logoutInfo() {
+    this.storage.clear();
+    this.nav.navigateRoot(["login"]);
+  }
 }

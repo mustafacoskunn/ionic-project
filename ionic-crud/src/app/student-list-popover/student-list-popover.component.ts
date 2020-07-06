@@ -1,4 +1,4 @@
-import { ApiService } from './../services/api.service';
+import { ApiService } from '../services/student-crud.service';
 import { PopoverController, NavParams } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
@@ -27,7 +27,6 @@ export class StudentListPopoverComponent implements OnInit {
     this.item.id = id;
     console.log(this.item.id);
     this.apiService.deleteItem(this.item.id).subscribe((response) => {
-      console.log(response);
       this.router.navigate(['student-list']);
       //student-list oninit olmalı
     });
