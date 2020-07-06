@@ -1,22 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>student-edit</ion-title>
+    <ion-title>Öğrenci Düzenle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="student-list"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-label position="stacked">Name: <ion-text color="danger"></ion-text>
+    <ion-label position="stacked">İsim Soyisim: <ion-text color="danger"></ion-text>
     </ion-label>
     <ion-input [(ngModel)]="data.name" type="text" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Age: <ion-text color="danger"></ion-text>
+    <ion-label position="stacked">Yaş: <ion-text color="danger"></ion-text>
     </ion-label>
     <ion-input [(ngModel)]="data.age" type="text" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Adress: <ion-text color="danger"></ion-text>
+    <ion-label position="stacked">Adres: <ion-text color="danger"></ion-text>
     </ion-label>
     <ion-input [(ngModel)]="data.address" type="text" ></ion-input>
   </ion-item>

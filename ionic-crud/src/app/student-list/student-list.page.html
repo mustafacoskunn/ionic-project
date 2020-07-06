@@ -1,31 +1,61 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>student-list</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false" (click)="openCustom()"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Öğrenci Listesi</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-content>
+    <ion-item lines="none" class="ion-padding">
+      <ion-label>Merhaba {{name}} </ion-label>
+    </ion-item>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
 
 <ion-content class="ion-padding">
   <ion-grid fixed>
+    <ion-item lines="none">
+      <ion-label>Toplam Öğrenci Sayısı :</ion-label>
+      <ion-badge color="success" slot="end">{{studentData.length}}</ion-badge>
+    </ion-item>
     <ion-row>
-      
       <ion-col size="6">
-        
+        <ion-button routerLink="/student-create/" expand="block" shape="round">
+          Öğrenci Ekle
+        </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button routerLink='/student-create/' expand="block" shape="round">
-          Öğrenci Ekle
+        <ion-button (click)="cikisYap()" expand="block" shape="round" color="danger">
+          Çıkış Yap
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-card *ngFor="let item of studentData">
-    <div class="ion-padding">
-      <ion-button color="warning" size="small" (click)="studentEdit(item)">
-        <ion-icon name="create"></ion-icon>
-      </ion-button>
-      <ion-button color="danger" size="small" (click)="deleteData(item.id)">
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
+    <div>
+      <ion-grid>
+        <ion-row center class="vertical-align-content">
+          <ion-col size="10">
+            <ion-button color="warning" size="small" (click)="studentEdit(item)">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" size="small" (click)="deleteData(item.id)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="2">
+            <ion-buttons>
+              <ion-button (click)="popOver(item)">
+                <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
     <ion-card-header>
       <ion-card-subtitle>ID:{{item.id}}</ion-card-subtitle>

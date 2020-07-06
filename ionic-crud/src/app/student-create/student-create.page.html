@@ -1,23 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>student-create</ion-title>
+    <ion-title>Öğrenci Ekle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="student-list"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item>
-    <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
+    <ion-label position="stacked">İsim Soyisim <ion-text color="danger">*</ion-text></ion-label>
     <ion-input  required type="text" [(ngModel)]="data.name"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Age <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input  required type="text"  [(ngModel)]="data.age"></ion-input>
+    <ion-label position="stacked">Yaş <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input  required type="number"  [(ngModel)]="data.age"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Address <ion-text color="danger"></ion-text></ion-label>
+    <ion-label position="stacked">Adres <ion-text color="danger"></ion-text></ion-label>
     <ion-input  required type="text"  [(ngModel)]="data.address"></ion-input>
   </ion-item>
   <div class="ion-padding">
-    <ion-button expand="block" type="submit" class="ion-no-margin" (click)="createStudent()">Create account</ion-button>
+    <ion-button expand="block" type="submit" class="ion-no-margin" (click)="createStudent()">Öğrenci Ekle</ion-button>
   </div>
 </ion-content>

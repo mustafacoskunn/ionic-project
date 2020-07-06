@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { Student } from "../models/student";
 import { retry, catchError } from "rxjs/operators";
-import{HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http'
+import{HttpClient, HttpHeaders, HttpErrorResponse, HttpEvent} from '@angular/common/http'
 import { throwError, Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
-  base_path = "http://localhost:3000/students";
+  base_path = "http://127.0.0.1:8000/api/students";
 
   constructor(private http: HttpClient) {}
 
@@ -30,14 +30,14 @@ export class ApiService {
     console.log("getİtem:"+id);
     return this.http.get<Student>(this.base_path + "/" + id);
   }
-  getList(): Observable<Student> {
+  getList(id): Observable<Student> {
     return this.http
-      .get<Student>(this.base_path)
+      .get<Student>(this.base_path+"/"+id)
   }
 
   updateItem(id, item): Observable<Student> {
    
-    return this.http.put<Student>(
+    return this.http.post<Student>(
       this.base_path + "/" + id ,
       item
      
@@ -45,6 +45,6 @@ export class ApiService {
     
   }
   deleteItem(id): Observable<Student> {
-    return this.http.delete<Student>(this.base_path + "/" + id);
+    return this.http.delete<Student>(this.base_path +"/?id="+ id);
   }
 }

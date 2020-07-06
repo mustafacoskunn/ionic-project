@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Giriş Yap</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" >
+  <ion-item>
+    <ion-label position="stacked">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input  required type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Şifre <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input  required type="text" [(ngModel)]="user.password" ></ion-input>
+  </ion-item>
+  <div class="ion-padding">
+    <ion-button expand="block" type="submit" class="ion-no-margin" (click)="userEkle()">Giriş Yap</ion-button>
+   
+  </div>
+  <div class="ion-padding">
+    <ion-button expand="block" type="submit" class="ion-no-margin" routerLink='/kayit-ol/' >Kayıt Ol</ion-button>
+  </div>
+</ion-content>

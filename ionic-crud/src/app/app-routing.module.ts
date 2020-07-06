@@ -5,7 +5,7 @@ const routes: Routes = [
  
   {
     path: '',
-    redirectTo: 'student-list',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -23,6 +23,14 @@ const routes: Routes = [
   {
     path: 'student-detail',
     loadChildren: () => import('./student-detail/student-detail.module').then( m => m.StudentDetailPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'kayit-ol',
+    loadChildren: () => import('./kayit-ol/kayit-ol.module').then( m => m.KayitOlPageModule)
   },
 ];
 

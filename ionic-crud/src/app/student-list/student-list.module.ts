@@ -1,3 +1,4 @@
+import { StudentListPopoverComponent } from './../student-list-popover/student-list-popover.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,8 @@ import { StudentListPage } from './student-list.page';
     IonicModule,
     StudentListPageRoutingModule
   ],
-  declarations: [StudentListPage]
+  entryComponents:[StudentListPopoverComponent]
+  ,
+  declarations: [StudentListPage,StudentListPopoverComponent]
 })
 export class StudentListPageModule {}
