@@ -1,4 +1,4 @@
-import { ApiService } from '../services/student-crud.service';
+import { ApiService } from "../services/student-crud.service";
 import { PopoverController, NavParams } from "@ionic/angular";
 import { Component, OnInit } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
@@ -9,25 +9,23 @@ import { NavigationExtras, Router } from "@angular/router";
   styleUrls: ["./student-list-popover.component.scss"],
 })
 export class StudentListPopoverComponent implements OnInit {
- 
-  item:any;
+  item: any;
   constructor(
     private router: Router,
     private popOverController: PopoverController,
     public navParams: NavParams,
-    private apiService:ApiService
+    private apiService: ApiService
   ) {
-     this.item = this.navParams.get("data");
-
+    this.item = this.navParams.get("data");
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
   deleteData(id) {
     this.popOverController.dismiss();
     this.item.id = id;
     console.log(this.item.id);
     this.apiService.deleteItem(this.item.id).subscribe((response) => {
-      this.router.navigate(['student-list']);
+      this.router.navigate(["student-list"]);
       //student-list oninit olmalı
     });
   }
@@ -42,5 +40,4 @@ export class StudentListPopoverComponent implements OnInit {
     this.popOverController.dismiss();
     this.router.navigate(["student-edit"], navigationExtras);
   }
-
 }

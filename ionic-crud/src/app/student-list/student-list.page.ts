@@ -1,10 +1,13 @@
-import { Login } from './../models/login';
-import { async } from '@angular/core/testing';
+import { Login } from "./../models/login";
 import { ApiService } from "../services/student-crud.service";
 import { Component, OnInit } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
-import { MenuController, PopoverController, NavController } from "@ionic/angular";
+import {
+  MenuController,
+  PopoverController,
+  NavController,
+} from "@ionic/angular";
 import { StudentListPopoverComponent } from "../student-list-popover/student-list-popover.component";
 
 @Component({
@@ -21,15 +24,14 @@ export class StudentListPage {
     private storage: Storage,
     private menu: MenuController,
     private popoverController: PopoverController,
-    private nav: NavController,
+    private nav: NavController
   ) {
     this.studentData = [];
-    this.accountData=new Login();
+    this.accountData = new Login();
     this.storage.get("account").then((val) => {
       this.accountData = val;
       this.getAllStudents();
     });
-  
   }
 
   openCustom() {
@@ -53,23 +55,20 @@ export class StudentListPage {
     return await popover.present();
   }
 
-  ngOnInit() {
-  
-  }
-  
+  ngOnInit() { }
 
   ionViewWillEnter() {
     this.getAllStudents();
   }
 
-    getAllStudents() {
+  getAllStudents() {
     if (!this.accountData) {
       this.router.navigate(["login"]);
     }
 
-      this.apiService.getList(this.accountData.id).subscribe((response) => {
+    this.apiService.getList(this.accountData.id).subscribe((response) => {
       this.studentData = response;
-     });
+    });
   }
 
   deleteData(id) {
@@ -87,7 +86,7 @@ export class StudentListPage {
     this.router.navigate(["student-edit"], navigationExtras);
   }
   logoutInfo() {
-    this.storage.clear();
     this.nav.navigateRoot(["login"]);
+    this.storage.clear();
   }
 }

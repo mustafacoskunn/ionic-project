@@ -21,16 +21,16 @@ const routes: Routes = [
     loadChildren: () => import('./student-list/student-list.module').then( m => m.StudentListPageModule)
   },
   {
-    path: 'student-detail',
-    loadChildren: () => import('./student-detail/student-detail.module').then( m => m.StudentDetailPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'qr-code-login',
+    loadChildren: () => import('./qr-code-login/qr-code-login.module').then( m => m.QrCodeLoginPageModule)
   },
   
 ];

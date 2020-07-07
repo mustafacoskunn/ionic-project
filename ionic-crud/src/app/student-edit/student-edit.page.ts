@@ -15,10 +15,6 @@ export class StudentEditPage implements OnInit {
     private router: Router,
     private apiservice: ApiService
   ) {
-    this.data = new Student();
-  }
-
-  ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.data = this.router.getCurrentNavigation().extras.state.data;
@@ -26,11 +22,12 @@ export class StudentEditPage implements OnInit {
     });
   }
 
+  ngOnInit() { }
+
   update() {
     this.apiservice
       .updateItem(this.data.id, this.data)
       .subscribe((response) => {
-        console.log(response);
         this.router.navigate(["student-list"]);
       });
   }

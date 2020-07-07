@@ -1,4 +1,4 @@
-import { RegisterService } from './../services/register.service';
+import { RegisterService } from "./../services/register.service";
 import { Component, OnInit } from "@angular/core";
 import { Storage } from "@ionic/storage";
 import {
@@ -6,9 +6,7 @@ import {
   AlertController,
   NavController,
 } from "@ionic/angular";
-import { Login } from '../models/login';
-
-
+import { Login } from "../models/login";
 
 @Component({
   selector: "app-register",
@@ -25,7 +23,7 @@ export class RegisterPage implements OnInit {
     private storage: Storage,
     private alertController: AlertController,
     private nav: NavController
-  ) {}
+  ) { }
   async presentToast(message) {
     const toast = await this.toastController.create({
       message: message,
@@ -52,7 +50,7 @@ export class RegisterPage implements OnInit {
   }
   register() {
     if (this.user.email && this.user.password && this.user.name) {
-      this.registerService.register(this.user).subscribe(async (response) => {
+      this.registerService.register(this.user).subscribe((response) => {
         if (response) {
           this.user = response;
           this.storage.set("account", this.user);

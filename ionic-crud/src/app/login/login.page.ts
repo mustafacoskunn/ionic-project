@@ -1,6 +1,5 @@
 import { Storage } from "@ionic/storage";
 import { ToastController, NavController } from "@ionic/angular";
-import { Router } from "@angular/router";
 import { Login } from "./../models/login";
 import { LoginServiceService } from "./../services/login-service.service";
 import { Component, OnInit } from "@angular/core";
@@ -16,7 +15,6 @@ export class LoginPage implements OnInit {
   errorInfo = "Mail veya Şifre Yanlış !";
   constructor(
     private loginService: LoginServiceService,
-    private router: Router,
     private nav: NavController,
     private toastController: ToastController,
     private storage: Storage
@@ -25,10 +23,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.user = new Login();
 
-    this.storage.get("account").then((val) => {
-    
-  
-    });
+    this.storage.get("account").then((val) => { });
   }
   ionViewWillEnter() {
     this.storage.clear();
@@ -48,12 +43,10 @@ export class LoginPage implements OnInit {
     } else {
       this.loginService.login(this.user).subscribe((response) => {
         if (response) {
+          this.nav.navigateRoot(["student-list"]);
           this.storage.clear();
           this.user = response;
-          this.storage.set('account', this.user);
-          //this.router.navigate(["student-list"]);
-
-           this.nav.navigateRoot(["student-list"]);
+          this.storage.set("account", this.user);
         } else {
           this.presentToast(this.errorInfo);
         }

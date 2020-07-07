@@ -40,6 +40,8 @@ export class StudentCreatePage implements OnInit {
       this.presentToast(this.messageInfo);
     } else {
       this.apiService.createItem(this.data).subscribe((response) => {
+      
+        
         this.router.navigate(["student-list"]);
       });
     }
