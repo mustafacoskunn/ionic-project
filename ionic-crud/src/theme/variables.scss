@@ -3,6 +3,8 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+
   ion-button {
     --border-radius: 20px;
   }
@@ -10,6 +12,31 @@
     border-radius: 20px;
     background-color: #e6e6e6;
   }
+  
+  .ion-grid-center {
+       
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+   
+    
+   }
+   .center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    display: block !important;
+    background: white;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+ 
   /** primary **/
   --ion-color-primary: #57b846;
   --ion-color-primary-rgb: 87,184,70;
@@ -81,6 +108,8 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+
 }
 
 @media (prefers-color-scheme: dark) {

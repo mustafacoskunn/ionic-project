@@ -1,0 +1,58 @@
+{
+  "studentList": {
+    "title": "Student List",
+    "menuTitle": "here your students",
+    "menuHello": "Hello",
+    "totalStudents": "Total Number of Students",
+    "buttonAddStudent": "Add Student",
+    "buttonLogOut": "Log Out",
+    "labelAge": "Age"
+  },
+  "popOver": {
+    "buttonDelete": "Delete",
+    "buttonEdit": "Edit"
+  },
+  "loginPage": {
+    "textLogin": "Login",
+    "placeHolderPassword": "Password",
+    "buttonRegister": "Register",
+    "buttonQrLogin": "Login with QR Code"
+  },
+  "registerPage":{
+      "textRegister":"Register",
+      "placeName":"Name and Surname",
+      "placePassword":"Password"
+  },
+  "studentCreatePage":{
+      "titleAddStudent":"Add Students",
+      "labelName":"Name and Surname",
+      "labelAge":"Age",
+      "labelAddress":"Addres"
+  },
+  
+    "studentEditPage":{
+        "titleEditStudent":"Edit Students",
+        "labelName":"Name and Surname",
+        "labelAge":"Age",
+        "labelAddress":"Addres"
+    },
+    "alertRegister":{
+        "alertHeaderHello":"Hello, ",
+        "alertHeaderText":" Welcome",
+        "alertSubHeaderText":"Here you can see Your Students and make changes.",
+        "alertMessage":"This is an education management system.",
+        "alertButton":"Close"
+    },
+    "alertToastMessage":{
+        "textAlreadyExist" : "Such a user already exists!",
+        "textNotEmpty" : "Mail or password cannot be empty!",
+        "errorInfo" : "Mail or Password Wrong!",
+        "textEmptyCreate" : "Name, age or address cannot be empty!"
+    },
+    "changeLanguage":{
+      "textLanguage":"Language",
+      "textTurkish":"Turkish",
+      "textEnglish":"English"
+
+  }
+}

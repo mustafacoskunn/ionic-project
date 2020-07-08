@@ -1,0 +1,59 @@
+{
+    "studentList": {
+        "title": "Öğrenci Listesi",
+        "menuTitle": "Öğrencilerin",
+        "menuHello": "Merhaba",
+        "totalStudents": "Toplam Öğrenci Sayısı",
+        "buttonAddStudent": "Öğrenci Ekle",
+        "buttonLogOut": "Çıkış Yap",
+        "labelAge": "Yaş"
+    },
+    "popOver": {
+        "buttonDelete": "Sil",
+        "buttonEdit": "Ekle"
+    },
+    "loginPage":{
+        "textLogin":"Giriş Yap",
+        "placeHolderPassword":"Şifre",
+        "buttonRegister":"Kayıt Ol",
+        "buttonQrLogin":"QR Kod ile Giriş"
+    
+    },
+    "registerPage":{
+        "textRegister":"Kayıt Ol",
+        "placeName":"İsim ve Soyisim",
+        "placePassword":"Şifre"
+    
+    },
+    "studentCreatePage":{
+        "titleAddStudent":"Öğrenci Ekle",
+        "labelName":"İsim ve Soyisim",
+        "labelAge":"Yaş",
+        "labelAddress":"Adres"
+    },
+    "studentEditPage":{
+        "titleEditStudent":"Öğrenciyi Düzenle",
+        "labelName":"İsim ve Soyisim",
+        "labelAge":"Yaş",
+        "labelAddress":"Adres"
+    },
+    "alertRegister":{
+        "alertHeaderHello":"Merhaba, ",
+        "alertHeaderText":" Hoşgeldin",
+        "alertSubHeaderText":"Burada Kendi Öğrencilerini görebilir ve üzerinde değişiklikler yapabilirsin.",
+        "alertMessage":"Bu bir eğitim yönetim sistemidir.",
+        "alertButton":"Kapat"
+    },
+    "alertToastMessage":{
+        "textAlreadyExist" : "Böyle bir kullanıcı zaten var!",
+        "textNotEmpty" : "Mail veya şifre boş bırakılamaz!",
+        "errorInfo" : "Mail veya Şifre Yanlış !",
+        "textEmptyCreate" : "Isim,yaş veya adres boş bırakılamaz!"
+    },
+    "changeLanguage":{
+        "textLanguage":"Dil",
+        "textTurkish":"Türkçe",
+        "textEnglish":"Ingilizce"
+
+    }
+}

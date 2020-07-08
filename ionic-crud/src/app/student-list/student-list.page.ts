@@ -1,3 +1,4 @@
+import { TranslateService } from "@ngx-translate/core";
 import { Login } from "./../models/login";
 import { ApiService } from "../services/student-crud.service";
 import { Component, OnInit } from "@angular/core";
@@ -7,6 +8,7 @@ import {
   MenuController,
   PopoverController,
   NavController,
+  LoadingController,
 } from "@ionic/angular";
 import { StudentListPopoverComponent } from "../student-list-popover/student-list-popover.component";
 
@@ -18,20 +20,48 @@ import { StudentListPopoverComponent } from "../student-list-popover/student-lis
 export class StudentListPage {
   studentData: any;
   accountData: any;
+  loading: any;
+  chooseLanguage: any;
   constructor(
     private apiService: ApiService,
     private router: Router,
     private storage: Storage,
     private menu: MenuController,
     private popoverController: PopoverController,
-    private nav: NavController
+    private nav: NavController,
+    private loadingController: LoadingController,
+    private translate: TranslateService
   ) {
     this.studentData = [];
     this.accountData = new Login();
+
     this.storage.get("account").then((val) => {
       this.accountData = val;
       this.getAllStudents();
     });
+    this.chooseLanguage = this.translate.getDefaultLang();
+  }
+  changeLanguage() {
+    if (this.chooseLanguage == "tr") this.translate.setDefaultLang("tr");
+    if (this.chooseLanguage == "en") this.translate.setDefaultLang("en");
+  }
+  loadFlags() {
+    setTimeout(() => {
+      let buttonElements = document.querySelectorAll(
+        "div.alert-radio-group button"
+      );
+
+      for (let index = 0; index < buttonElements.length; index++) {
+        let buttonElement = buttonElements[index];
+        let optionLabelElement = buttonElement.querySelector(
+          ".alert-radio-label"
+        );
+        optionLabelElement.innerHTML +=
+          '<img src="../assets/img/' +
+          index +
+          '.png" style="width:30px;height:30px;float:right;"/>';
+      }
+    }, 50);
   }
 
   openCustom() {
@@ -55,20 +85,37 @@ export class StudentListPage {
     return await popover.present();
   }
 
-  ngOnInit() { }
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      cssClass: "my-custom-class",
+      backdropDismiss: false,
+    });
+    await this.loading.present();
+
+    const { role, data } = await this.loading.onDidDismiss();
+  }
+
+  ngOnInit() {}
 
   ionViewWillEnter() {
-    this.getAllStudents();
+    // this.getAllStudents();
   }
 
   getAllStudents() {
+    this.presentLoading();
     if (!this.accountData) {
       this.router.navigate(["login"]);
+      this.loading.dismiss();
     }
 
     this.apiService.getList(this.accountData.id).subscribe((response) => {
       this.studentData = response;
+
+      this.loading.dismiss();
     });
+  }
+  addStudent() {
+    this.nav.navigateRoot(["student-create"]);
   }
 
   deleteData(id) {

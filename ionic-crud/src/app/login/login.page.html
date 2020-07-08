@@ -1,49 +1,50 @@
-<ion-content class="ion-padding">
-
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" class="textGiris">
-        <div class="ion-text-center">
-          <ion-text>
-            <h1>Giriş Yap</h1>
-          </ion-text>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-item class="inputStyle" lines="none" color="#e6e6e6">
-          <ion-input placeholder="Email" required type="text" [(ngModel)]="user.email"></ion-input>
-          <ion-icon name="mail-outline" slot="start" class=""></ion-icon>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-item class="inputStyle" color="#e6e6e6" lines="none">
-          <ion-input placeholder="Şifre" required type="password" [(ngModel)]="user.password"></ion-input>
-          <ion-icon name="lock-closed-outline" slot="start" class=""></ion-icon>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button expand="block" type="submit" (click)="loginInfo()">Giriş Yap</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button expand="block" type="submit" routerLink="/register/">Kayıt Ol</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button expand="block" type="submit" routerLink="/qr-code-login/">QR Kod ile Giriş</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-
+<ion-content class="ion-padding" slot="fixed">
+  <div class="center">
+    <ion-grid fixed class="ion-grid-center">
+      <ion-row>
+        <ion-col size="12" class="textGiris">
+          <div class="ion-text-center">
+            <ion-text>
+              <h1>{{ 'loginPage.textLogin' | translate }}</h1>
+            </ion-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="inputStyle" lines="none" color="#e6e6e6">
+            <ion-input placeholder="Email" required type="text" [(ngModel)]="user.email"></ion-input>
+            <ion-icon name="mail-outline" slot="start" class=""></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="inputStyle" color="#e6e6e6" lines="none">
+            <ion-input placeholder="{{'loginPage.placeHolderPassword'| translate}}" required type="password"
+              [(ngModel)]="user.password"></ion-input>
+            <ion-icon name="lock-closed-outline" slot="start" class=""></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" type="submit" (click)="loginInfo()">{{ 'loginPage.textLogin' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" type="submit" routerLink="/register/">{{ 'loginPage.buttonRegister' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" type="submit" routerLink="/qr-code-login/">
+            {{ 'loginPage.buttonQrLogin' | translate }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

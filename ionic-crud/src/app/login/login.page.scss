@@ -1,15 +1,10 @@
 .textGiris {
-  margin-bottom: 5%;
+  margin-bottom: 20%;
 }
 
 
-ion-grid {
- 
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) !important;
-      display: block !important;
-      width: 90%;
+ion-content {
+  --background: #9053c7;
+  
   
 }

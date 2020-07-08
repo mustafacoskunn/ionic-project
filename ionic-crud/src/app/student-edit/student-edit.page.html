@@ -1,35 +1,70 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Öğrenci Düzenle</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="student-list"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label position="stacked">İsim Soyisim: <ion-text color="danger"></ion-text>
-    </ion-label>
-    <ion-input [(ngModel)]="data.name" type="text" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Yaş: <ion-text color="danger"></ion-text>
-    </ion-label>
-    <ion-input [(ngModel)]="data.age" type="number" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Adres: <ion-text color="danger"></ion-text>
-    </ion-label>
-    <ion-input [(ngModel)]="data.address" type="text" ></ion-input>
-  </ion-item>
+  <div class="center">
+    <div class="backButton">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="student-list"></ion-back-button>
+        <ion-title style="color:black; margin-left: -15px;  "> {{ 'studentEditPage.titleEditStudent' | translate }}
+        </ion-title>
+      </ion-buttons>
 
-  <ion-button color="success" size="small" (click)="update()" class="ion-padding" >
-    <ion-icon name="checkmark-circle"></ion-icon>
-  </ion-button>
-  <ion-button color="danger" size="small" [routerLink]="[ '/student-list']" class="ion-padding" >
-    <ion-icon name="close-circle"></ion-icon>
-  </ion-button>
+    </div>
+  <ion-grid fixed class="ion-grid-center">
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="inputStyle" lines="none" color="#e6e6e6">
+          <ion-label position="stacked" style="font-weight: bold;">{{ 'studentEditPage.labelName' | translate }}
+            <ion-text color="danger"></ion-text>
+          </ion-label>
+          <ion-input placeholder="" required type="text" [(ngModel)]="data.name"></ion-input>
+          <ion-icon name="body-outline" slot="start" class=""></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="inputStyle" lines="none" color="#e6e6e6">
+          <ion-label position="stacked" style="font-weight: bold;">{{ 'studentEditPage.labelAge' | translate }}
+            <ion-text color="danger"></ion-text>
+          </ion-label>
+          <ion-input required type="number" [(ngModel)]="data.age"></ion-input>
+          <ion-icon name="resize-outline" slot="start" class=""></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="inputStyle" lines="none" color="#e6e6e6">
+          <ion-label position="stacked" style="font-weight: bold;">{{ 'studentEditPage.labelAddress' | translate }}
+            <ion-text color="danger"></ion-text>
+          </ion-label>
+          <ion-input required type="text" [(ngModel)]="data.address"></ion-input>
+          <ion-icon name="home" slot="start" class=""></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row >  
+   
+      <ion-col size="6" style="text-align: center;">
+      
+        <ion-button color="success" size="small" (click)="update()" class="ion-padding" >
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-button>
+        
+      </ion-col>
+   
+      <ion-col size="6" style="text-align: center;">
+        <ion-button color="danger" size="small" [routerLink]="[ '/student-list']" class="ion-padding" >
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+ 
+
+  </div>
   
   
 </ion-content>

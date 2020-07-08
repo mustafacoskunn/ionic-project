@@ -1,9 +1,11 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Storage } from "@ionic/storage";
 import { Router } from "@angular/router";
 import { ApiService } from "../services/student-crud.service";
 import { Student } from "./../models/student";
 import { Component, OnInit } from "@angular/core";
-import { ToastController, AlertController } from "@ionic/angular";
+import { ToastController, AlertController, NavController } from "@ionic/angular";
+
 
 @Component({
   selector: "app-student-create",
@@ -13,13 +15,16 @@ import { ToastController, AlertController } from "@ionic/angular";
 export class StudentCreatePage implements OnInit {
   data: any;
   accountData: any;
-  messageInfo = "İsim veya Yaş Boş bırakılamaz.";
+  textList:any;
   constructor(
     private apiService: ApiService,
-    public router: Router,
+    private nav:NavController,
+    private router:Router,
     private toastController: ToastController,
-    private storage: Storage
+    private storage: Storage,
+    private translate:TranslateService
   ) {
+
     this.data = new Student();
     this.storage.get("account").then((val) => {
       this.accountData = val;
@@ -35,14 +40,22 @@ export class StudentCreatePage implements OnInit {
     });
     toast.present();
   }
+  languageCheck(){
+    this.translate.get('alertToastMessage').subscribe( (text: string) => {
+      this.textList = text;
+ 
+    });
+
+  }
   createStudent() {
     if (!this.data.name || !this.data.age) {
-      this.presentToast(this.messageInfo);
+      this.languageCheck();
+      this.presentToast(this.textList.textEmptyCreate);
     } else {
       this.apiService.createItem(this.data).subscribe((response) => {
       
-        
-        this.router.navigate(["student-list"]);
+        this.nav.navigateRoot(["student-list"]);
+      
       });
     }
   }

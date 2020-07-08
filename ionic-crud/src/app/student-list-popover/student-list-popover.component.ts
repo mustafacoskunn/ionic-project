@@ -19,18 +19,18 @@ export class StudentListPopoverComponent implements OnInit {
     this.item = this.navParams.get("data");
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
   deleteData(id) {
     this.popOverController.dismiss();
     this.item.id = id;
-    console.log(this.item.id);
+ 
     this.apiService.deleteItem(this.item.id).subscribe((response) => {
       this.router.navigate(["student-list"]);
       //student-list oninit olmalı
     });
   }
   studentEdit(item) {
-    console.log(item);
+  
     let navigationExtras: NavigationExtras = {
       state: {
         data: item,

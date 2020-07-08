@@ -1,5 +1,10 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Storage } from "@ionic/storage";
-import { ToastController, NavController } from "@ionic/angular";
+import {
+  ToastController,
+  NavController,
+  LoadingController,
+} from "@ionic/angular";
 import { Login } from "./../models/login";
 import { LoginServiceService } from "./../services/login-service.service";
 import { Component, OnInit } from "@angular/core";
@@ -11,22 +16,46 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LoginPage implements OnInit {
   user: any;
-  emptyInfo = "Mail veya Şifre Boş Bırakılamaz !";
-  errorInfo = "Mail veya Şifre Yanlış !";
+  loading: any;
+  textList:any;
+
+
   constructor(
     private loginService: LoginServiceService,
     private nav: NavController,
     private toastController: ToastController,
-    private storage: Storage
-  ) { }
+    private storage: Storage,
+    private loadingController: LoadingController,
+    private translate:TranslateService,
+  ) {
+   
+  }
 
   ngOnInit() {
     this.user = new Login();
 
-    this.storage.get("account").then((val) => { });
+    this.storage.get("account").then((val) => {});
+    
   }
   ionViewWillEnter() {
     this.storage.clear();
+  }
+  languageCheck(){
+    this.translate.get('alertToastMessage').subscribe( (text: string) => {
+      this.textList = text;
+ 
+    });
+
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      cssClass: "my-custom-class",
+      backdropDismiss: false,
+    });
+    await this.loading.present();
+
+    const { role, data } = await this.loading.onDidDismiss();
   }
 
   async presentToast(message) {
@@ -39,16 +68,23 @@ export class LoginPage implements OnInit {
 
   loginInfo() {
     if (!this.user.email || !this.user.password) {
-      this.presentToast(this.emptyInfo);
+      this.languageCheck();
+      this.presentToast(this.textList.textNotEmpty);
     } else {
+      this.presentLoading();
+
       this.loginService.login(this.user).subscribe((response) => {
         if (response) {
-          this.nav.navigateRoot(["student-list"]);
           this.storage.clear();
           this.user = response;
           this.storage.set("account", this.user);
+          this.loading.dismiss();
+          this.nav.navigateRoot(["student-list"]);
+      
         } else {
-          this.presentToast(this.errorInfo);
+          this.loading.dismiss();
+          this.languageCheck();
+          this.presentToast(this.textList.errorInfo);
         }
       });
     }

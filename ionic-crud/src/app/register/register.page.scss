@@ -1,0 +1,29 @@
+.textGiris {
+    margin-bottom: 20%;
+  }
+ion-content {
+  --background: #9053c7;
+}
+.backButton{
+    background: white;
+    border-radius:10px;
+}
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    display: block !important;
+    background: white;
+    height: 100%;
+    border-radius:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .vertical-align-content > *
+  {
+       display: flex!important;
+       align-content: center!important;
+       align-items: center!important;
+  }

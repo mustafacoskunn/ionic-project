@@ -10,6 +10,7 @@ export class QrCodeLoginPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
